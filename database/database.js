@@ -10,7 +10,7 @@ async function connectionRequest() {
   });
 
   console.log("Connected to MySQL Database!");
-  return connection; // Return the connection
+  return connection; 
 }
 
 module.exports = connectionRequest;
