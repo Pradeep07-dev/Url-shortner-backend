@@ -8,11 +8,14 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["https://url-shortner-frontend-tau.vercel.app"],
-  })
-);
+
+const corsOptions = {
+  origin: "https://url-shortner-tau.vercel.app",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 
 app.use("/", urlRouter);
 
