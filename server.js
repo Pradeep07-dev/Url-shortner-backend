@@ -10,7 +10,7 @@ const port = process.env.PORT;
 app.use(express.json());
 
 const corsOptions = {
-  origin: "https://url-shortner-tau.vercel.app",
+  origin: "https://url-shortner-frontend-tau.vercel.app",
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
