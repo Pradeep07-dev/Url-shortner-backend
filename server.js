@@ -10,7 +10,7 @@ const port = process.env.PORT;
 app.use(express.json());
 
 const corsOptions = {
-  origin: ["https://url-shortner-in.vercel.app", "http://localhost:3000"],
+  origin: ["https://url-shortner-in.vercel.app", "http://localhost:5173"],
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
