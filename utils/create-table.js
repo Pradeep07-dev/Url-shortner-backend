@@ -6,10 +6,10 @@ async function createTables() {
 
     const [result] = await connection.query(`
       CREATE TABLE IF NOT EXISTS urls (
-        id          VARCHAR(255) PRIMARY KEY,
-        OrgUrl      VARCHAR(255) NOT NULL,
-        ShortUrl    VARCHAR(255) NOT NULL,
-        Date        DATETIME DEFAULT CURRENT_TIMESTAMP
+        id             VARCHAR(255) PRIMARY KEY,
+        OrgUrl         VARCHAR(255) NOT NULL,
+        ShortUrl       VARCHAR(255) NOT NULL,
+        created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
         `);
 

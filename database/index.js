@@ -7,11 +7,12 @@ async function getUrlTable(url_id) {
   const value = [url_id];
   const [result] = await connection.query(getUrl, value);
   if (result) {
-    console.log("Query successful:", result);
+    connection.destroy();
     return result;
   } else {
     console.log("Query unsuccessful:", error.message);
     connection.destroy();
+    return;
   }
 }
 
@@ -29,7 +30,6 @@ async function createUrlTable(url_id, shortUrl, orgUrl) {
         [url_id]
       );
 
-      console.log("Inserted record:", rows);
       connection.destroy();
       return rows;
     }
@@ -39,4 +39,21 @@ async function createUrlTable(url_id, shortUrl, orgUrl) {
   }
 }
 
-module.exports = { getUrlTable, createUrlTable };
+async function deleteUrlTable(url) {
+  const connection = await connectionRequest();
+
+  const deleteUrl = ` DELETE FROM urls WHERE orgUrl = ?`;
+  const result = await connection.query(deleteUrl, [url]);
+
+  if (result) {
+    console.log("Delte Url from Table");
+    connection.destroy();
+    return;
+  } else {
+    console.log("Error:", error.message);
+    connection.destroy();
+    return;
+  }
+}
+
+module.exports = { getUrlTable, createUrlTable, deleteUrlTable };
